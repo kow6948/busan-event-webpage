@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101217">
+  <meta name="description" content="2026 부산 락 페스티벌. 2026년 10월 1일~4일, 삼락생태공원. MEGADEATH, GREEN DAY, SUM41, 잔나비의 라인업과 티켓·관람 안내를 확인하세요.">
+  <title>2026 부산 락 페스티벌</title>
+  <style>
+    :root { --bg:#101217; --panel:#191c23; --paper:#f4f2e9; --muted:#adb2bc; --acid:#d4fb47; --line:#363a42; --ink:#11151b; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:90px; }
+    body { margin:0; background:var(--bg); color:var(--paper); font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif; line-height:1.65; word-break:keep-all; }
+    a { color:inherit; text-decoration:none; }
+    button, summary, select { font:inherit; }
+    a:focus-visible, summary:focus-visible, select:focus-visible { outline:3px solid var(--acid); outline-offset:6px; }
+    ::selection { color:var(--ink); background:var(--acid); }
+    .skip { position:fixed; top:-100px; left:20px; padding:12px 20px; background:var(--acid); color:var(--ink); z-index:100; }
+    .skip:focus { top:12px; }
+    .wrap { width:min(1240px, calc(100% - 88px)); margin-inline:auto; }
+    header { background:rgba(16,18,23,.97); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20; }
+    .header-inner { min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:28px; }
+    .brand { display:flex; gap:12px; align-items:center; font-size:14px; font-weight:900; line-height:1.3; }
+    .brand-icon { width:32px; height:34px; display:flex; gap:4px; align-items:center; transform:skew(-12deg); }
+    .brand-icon i { background:var(--acid); width:7px; height:22px; }
+    .brand-icon i:nth-child(2) { height:34px; }
+    .brand small { display:block; font-size:10px; letter-spacing:2px; color:var(--muted); margin-top:4px; }
+    nav { display:flex; gap:28px; align-items:center; font-size:13px; font-weight:700; }
+    nav a:hover { color:var(--acid); }
+    nav .nav-ticket { border:1px solid var(--acid); color:var(--acid); padding:9px 17px; }
+    .hero { position:relative; overflow:hidden; }
+    .hero::before { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg,transparent 49.8%,#ffffff04 50%,transparent 50.2%); background-size:60px 60px; }
+    .hero-inner { display:grid; grid-template-columns:1.15fr 1fr; min-height:670px; position:relative; align-items:center; gap:24px; padding-block:60px; }
+    .eyebrow { display:flex; align-items:center; gap:10px; color:var(--acid); font-size:12px; font-weight:800; letter-spacing:2px; margin:0 0 25px; }
+    .dot { width:7px; height:7px; border-radius:50%; background:currentColor; }
+    h1 { font-size:clamp(58px,6.8vw,96px); line-height:1.04; letter-spacing:-6px; margin:0 0 28px; font-weight:900; }
+    h1 .year { display:block; font-size:16px; letter-spacing:5px; margin-bottom:16px; color:var(--muted); }
+    h1 .accent { display:block; color:var(--acid); white-space:nowrap; }
+    .hero-info { display:flex; gap:26px; align-items:center; border-left:3px solid var(--acid); padding-left:18px; margin:32px 0; }
+    .hero-date { font-size:29px; font-weight:900; letter-spacing:-1px; line-height:1.2; }
+    .hero-date small { display:block; font-size:11px; font-weight:500; color:var(--muted); margin-top:8px; letter-spacing:1px; }
+    .hero-location { font-size:16px; font-weight:700; }
+    .hero-location span { display:block; color:var(--muted); font-size:12px; font-weight:400; }
+    .hero-artists { font-size:15px; color:var(--paper); margin:0 0 28px; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { min-height:48px; padding:12px 23px; display:inline-flex; align-items:center; justify-content:center; gap:30px; font-size:13px; font-weight:800; border:1px solid var(--line); transition:background .18s,color .18s; }
+    .btn-primary { background:var(--acid); color:var(--ink); border-color:var(--acid); }
+    .btn:hover { background:var(--paper); color:var(--ink); }
+    .hero-art { aspect-ratio:1; position:relative; display:grid; place-items:center; isolation:isolate; }
+    .hero-art::before { content:""; position:absolute; inset:7%; background:var(--acid); border-radius:50%; opacity:.08; filter:blur(45px); z-index:-1; }
+    .record { position:absolute; width:85%; aspect-ratio:1; border-radius:50%; background:repeating-radial-gradient(circle,transparent 0 7px,#d4fb4728 8px 9px,transparent 10px 12px),conic-gradient(from 10deg,#101217,#343b30,#11151b,#3b4931,#101217); border:1px solid #d4fb4777; transform:rotate(-18deg); box-shadow:0 0 0 20px #d4fb4704,0 0 0 21px #d4fb4720; }
+    .record::after { content:""; position:absolute; inset:34%; border-radius:50%; border:24px solid var(--acid); background:var(--ink); box-shadow:0 0 0 2px var(--ink),0 0 0 4px #d4fb4766; }
+    .art-word { position:relative; font-family:Impact,"Arial Black",sans-serif; font-size:clamp(85px,13vw,178px); line-height:.78; letter-spacing:-5px; transform:rotate(-10deg); text-align:center; text-shadow:5px 5px 0 var(--bg); }
+    .art-word span { display:block; color:var(--acid); }
+    .art-label { position:absolute; left:0; top:9%; font-size:10px; color:var(--muted); letter-spacing:3px; writing-mode:vertical-rl; }
+    .art-cross { position:absolute; right:2%; bottom:8%; font-size:80px; color:var(--acid); font-weight:200; line-height:1; }
+    .art-caption { position:absolute; bottom:0; left:10%; right:5%; display:flex; justify-content:space-between; border-top:1px solid var(--line); padding-top:12px; font-family:monospace; font-size:11px; letter-spacing:2px; color:var(--muted); }
+    .ribbon { background:var(--acid); color:var(--ink); border-top:1px solid var(--acid); border-bottom:1px solid var(--acid); }
+    .ribbon-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; padding-block:17px; font-weight:900; font-size:18px; letter-spacing:1px; }
+    .ribbon .star { font-size:23px; }
+    section { padding:88px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:flex-end; gap:30px; margin-bottom:36px; }
+    .section-label { margin:0 0 10px; color:var(--acid); font-size:11px; font-weight:800; letter-spacing:2px; }
+    h2 { margin:0; font-size:clamp(32px,3.2vw,44px); letter-spacing:-2px; line-height:1.25; }
+    .section-note { font-size:12px; color:var(--muted); margin:0; }
+    .intro { display:grid; grid-template-columns:1fr 1fr; gap:70px; border-bottom:1px solid var(--line); }
+    .intro h2 { font-size:clamp(32px,3.7vw,49px); line-height:1.4; }
+    .intro h2 span { color:var(--acid); }
+    .intro-copy p { margin:0 0 18px; color:var(--muted); font-size:15px; }
+    .intro-copy strong { color:var(--paper); }
+    .audience { display:flex; gap:8px; flex-wrap:wrap; margin-top:24px; }
+    .tag { padding:6px 12px; border:1px solid var(--line); color:var(--muted); font-size:12px; }
+    .artist-grid { display:grid; grid-template-columns:repeat(2,1fr); border:1px solid var(--line); }
+    .artist { position:relative; min-height:175px; padding:32px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; }
+    .artist:nth-child(odd) { border-right:1px solid var(--line); }
+    .artist:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+    .artist::after { content:""; position:absolute; width:110px; height:180%; right:20px; top:-30%; border-left:1px solid #d4fb472a; border-right:1px solid #d4fb472a; transform:rotate(30deg); pointer-events:none; }
+    .artist h3 { font-size:clamp(31px,3vw,44px); margin:0; font-weight:900; line-height:1.3; letter-spacing:-1px; position:relative; z-index:1; overflow-wrap:anywhere; }
+    .artist:nth-child(2), .artist:nth-child(3) { background:var(--panel); }
+    .artist p { font-size:12px; color:var(--muted); margin:12px 0 0; }
+    .artist .unknown { color:var(--acid); }
+    .inline-note { color:var(--muted); font-size:12px; margin:20px 0 0; display:flex; align-items:flex-start; gap:9px; }
+    .inline-note::before { content:"※"; color:var(--acid); }
+    .schedule { background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .schedule-layout { display:grid; grid-template-columns:.85fr 1.15fr; gap:70px; }
+    .date-block { margin-top:32px; font-size:54px; font-weight:900; line-height:1.2; letter-spacing:-2px; }
+    .date-block span { display:block; font-size:16px; font-weight:500; letter-spacing:0; color:var(--muted); margin-top:10px; }
+    dl { margin:0; }
+    .facts > div { display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:17px 0; border-bottom:1px solid var(--line); font-size:14px; }
+    .facts > div:first-child { border-top:1px solid var(--line); }
+    dt { color:var(--muted); }
+    dd { margin:0; text-align:right; }
+    .unknown { color:var(--muted); }
+    .ticket-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+    .ticket { border:1px solid var(--line); padding:30px 25px; position:relative; background:var(--panel); }
+    .ticket::before { content:""; position:absolute; left:24px; right:24px; bottom:29px; border-bottom:1px dashed var(--line); }
+    .ticket .ticket-label { font-size:10px; letter-spacing:2px; color:var(--muted); margin:0 0 20px; }
+    .ticket h3 { font-size:26px; margin:0 0 28px; }
+    .price { font-size:clamp(24px,2.6vw,35px); font-weight:900; margin:0 0 23px; letter-spacing:-1px; }
+    .price small { font-size:14px; margin-left:3px; font-weight:500; }
+    .ticket.is-selected { border-color:var(--acid); }
+    .ticket.is-selected h3 { color:var(--acid); }
+    .ticket-selector { margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; padding:24px 27px; background:var(--panel); border:1px solid var(--line); }
+    .ticket-selector label { display:block; margin-bottom:10px; color:var(--muted); font-size:13px; }
+    .ticket-selector select { width:100%; min-height:48px; padding:10px 14px; border:1px solid var(--acid); color:var(--paper); background:var(--bg); color-scheme:dark; cursor:pointer; }
+    .selection-summary { text-align:right; }
+    .selection-summary span { display:block; font-size:12px; color:var(--muted); margin-bottom:6px; }
+    .selection-summary output { font-size:23px; font-weight:800; color:var(--acid); }
+    .booking { margin-top:28px; padding:23px 27px; border:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:24px; }
+    .booking strong { font-size:15px; }
+    .booking p { font-size:12px; color:var(--muted); margin:5px 0 0; }
+    .status { padding:8px 17px; border:1px solid var(--line); color:var(--muted); font-size:12px; flex-shrink:0; }
+    details { border-bottom:1px solid var(--line); }
+    summary { list-style:none; cursor:pointer; padding:19px 0; display:flex; justify-content:space-between; gap:20px; font-size:13px; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:"+"; color:var(--acid); font-size:20px; line-height:1; }
+    details[open] summary::after { content:"−"; }
+    details .facts { padding-bottom:20px; }
+    .location { background:var(--panel); color:var(--paper); border-block:1px solid var(--line); }
+    .location-grid { display:grid; grid-template-columns:1fr 1fr; gap:54px; }
+    .venue-card { padding:34px; border:1px solid var(--line); background:var(--bg); display:flex; flex-direction:column; justify-content:space-between; min-height:295px; position:relative; overflow:hidden; }
+    .venue-card::after { content:""; position:absolute; right:-70px; bottom:-100px; width:280px; height:280px; border:40px solid #d4fb4710; border-radius:50%; pointer-events:none; }
+    .venue-card h3 { font-size:32px; margin:0; letter-spacing:-1px; position:relative; z-index:1; }
+    .venue-card .venue-kicker { font-size:11px; letter-spacing:2px; margin:0 0 12px; color:var(--acid); }
+    .venue-card .venue-bottom { position:relative; z-index:1; font-size:13px; color:var(--muted); }
+    .transport h3 { font-size:22px; margin:0 0 16px; }
+    .transport > p { font-size:14px; color:var(--muted); margin:0 0 24px; }
+    .guide { padding-block:68px; border-bottom:1px solid var(--line); }
+    .guide-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:60px; }
+    .notice { border-left:3px solid var(--acid); padding:0 0 0 23px; }
+    .notice h3 { font-size:19px; margin:0 0 8px; }
+    .notice p { font-size:14px; color:var(--muted); margin:0; }
+    .guide details { margin-top:28px; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+    .contact h3 { font-size:18px; margin:0 0 20px; }
+    .pending { margin-top:40px; }
+    footer { border-top:1px solid var(--line); padding:30px 0; }
+    .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:30px; }
+    .footer-name { font-size:13px; font-weight:800; }
+    .footer-name small { display:block; color:var(--muted); font-size:10px; font-weight:400; margin-top:5px; letter-spacing:1px; }
+    .logo-placeholder { border:1px dashed var(--line); padding:10px 16px; color:var(--muted); font-size:11px; }
+    .top-link { color:var(--acid); font-size:12px; white-space:nowrap; }
+    @media (min-width:1600px) { .hero-inner { min-height:740px; } }
+    @media (max-width:1000px) {
+      .wrap { width:calc(100% - 48px); }
+      nav { gap:18px; }
+      .hero-inner { min-height:600px; }
+      h1 { letter-spacing:-4px; }
+      .hero-info { gap:16px; }
+      .hero-date { font-size:24px; }
+      .hero-artists { font-size:13px; }
+      .ticket { padding:24px 18px; }
+      .intro,.schedule-layout,.contact-grid,.guide-grid { gap:35px; }
+    }
+    @media (max-width:760px) {
+      html { scroll-padding-top:114px; }
+      .wrap { width:calc(100% - 40px); }
+      .header-inner { flex-direction:column; align-items:flex-start; gap:14px; padding-block:15px; }
+      .brand { font-size:12px; }
+      .brand small { display:none; }
+      .brand-icon { width:24px; height:24px; gap:3px; }
+      .brand-icon i { width:5px; height:16px; }
+      .brand-icon i:nth-child(2) { height:24px; }
+      nav { width:100%; justify-content:space-between; gap:10px; font-size:11px; }
+      nav .nav-ticket { padding:5px 11px; }
+      .hero-inner { grid-template-columns:1fr; padding-top:38px; padding-bottom:35px; gap:30px; }
+      .eyebrow { font-size:10px; margin-bottom:20px; }
+      h1 { font-size:clamp(56px,11.5vw,82px); letter-spacing:-4px; }
+      .hero-date { font-size:28px; }
+      .hero-info { margin:24px 0; }
+      .hero-art { width:min(100%,390px); justify-self:center; }
+      .art-word { font-size:clamp(105px,30vw,148px); }
+      .ribbon-inner { flex-wrap:wrap; justify-content:center; gap:7px 18px; font-size:12px; padding-block:13px; }
+      .ribbon .star { font-size:14px; }
+      section { padding:56px 0; }
+      .section-head { align-items:flex-start; flex-direction:column; gap:12px; margin-bottom:25px; }
+      .intro,.schedule-layout,.location-grid,.guide-grid,.contact-grid { grid-template-columns:1fr; gap:30px; }
+      .intro h2 { font-size:35px; }
+      .artist { padding:25px 18px; min-height:150px; }
+      .artist h3 { font-size:clamp(18px,4.7vw,30px); }
+      .artist p { font-size:11px; }
+      .artist::after { right:-40px; }
+      .date-block { font-size:47px; margin-top:25px; }
+      .facts > div { font-size:12px; grid-template-columns:1.25fr 1fr; }
+      .ticket-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+      .ticket { padding:23px 19px; }
+      .ticket h3 { font-size:22px; margin-bottom:22px; }
+      .price { font-size:28px; }
+      .booking { padding:20px; align-items:flex-start; flex-direction:column; gap:15px; }
+      .ticket-selector { grid-template-columns:1fr; gap:20px; padding:20px; }
+      .selection-summary { text-align:left; }
+      .venue-card { min-height:230px; padding:27px; }
+      .venue-card h3 { font-size:28px; }
+      .footer-inner { flex-wrap:wrap; gap:20px; }
+      .logo-placeholder { order:3; width:100%; }
+      .top-link { margin-left:auto; }
+    }
+    @media (max-width:380px) {
+      .artist-grid { grid-template-columns:1fr; }
+      .artist:nth-child(odd) { border-right:0; }
+      .artist:not(:last-child) { border-bottom:1px solid var(--line); }
+      .artist h3 { font-size:30px; }
+      .ticket-grid { grid-template-columns:1fr; }
+      .price { font-size:32px; }
+      .hero-info { flex-direction:column; align-items:flex-start; gap:14px; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .btn { transition:none; } }
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#main">본문 바로가기</a>
+  <header>
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="2026 부산 락 페스티벌 첫 화면">
+        <span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>부산 락 페스티벌<small>BUSAN ROCK FESTIVAL · 2026</small></span>
+      </a>
+      <nav aria-label="주요 메뉴">
+        <a href="#about">행사 소개</a><a href="#lineup">라인업</a><a href="#schedule">일정</a><a href="#location">오시는 길</a><a class="nav-ticket" href="#tickets">티켓 안내 ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow"><span class="dot" aria-hidden="true"></span> BUSAN ROCK FESTIVAL</p>
+          <h1><span class="year">2026</span>부산<span class="accent">락 페스티벌</span></h1>
+          <div class="hero-info">
+            <div class="hero-date">10.01 — 10.04<small>2026년 10월 1일~4일 · 총 4일</small></div>
+            <div class="hero-location">삼락생태공원<span>부산</span></div>
+          </div>
+          <p class="hero-artists">MEGADEATH · GREEN DAY · SUM41 · 잔나비</p>
+          <div class="actions"><a class="btn btn-primary" href="#lineup">라인업 보기 <span aria-hidden="true">↗</span></a><a class="btn" href="#tickets">티켓 안내 <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="record"></div><span class="art-label">MUSIC & CULTURE / BUSAN</span>
+          <div class="art-word">ROCK<span>BUSAN</span></div><span class="art-cross">✳</span>
+          <div class="art-caption"><span>2026 / 10.01—04</span><span>SAMNAK</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ribbon" aria-hidden="true"><div class="wrap ribbon-inner"><span>MEGADEATH</span><span class="star">✳</span><span>GREEN DAY</span><span class="star">✳</span><span>SUM41</span><span class="star">✳</span><span>잔나비</span><span class="star">✳</span><span>BUSAN 2026</span></div></div>
+
+    <section id="about">
+      <div class="wrap intro">
+        <div><p class="section-label">01 / ABOUT THE FESTIVAL</p><h2>화려한 라인업,<br><span>부산에서.</span></h2></div>
+        <div class="intro-copy">
+          <p>서울권에서만 볼 수 있었던 페스티벌을 <strong>부산에서 즐기는 시간.</strong> MEGADEATH, GREEN DAY, SUM41, 잔나비의 라인업을 만나보세요.</p>
+          <p>2026 부산 락 페스티벌은 <strong>부산 문화예술 시장 확대 및 페스티벌 홍보</strong>를 목적으로 합니다.</p>
+          <p>음악 및 문화 전반을 좋아하는 <strong>10~30대 젊은 관객</strong>과 소수의 <strong>락 마니아</strong>가 주요 대상입니다.</p>
+          <div class="audience"><span class="tag">음악</span><span class="tag">문화</span><span class="tag">락</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lineup">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-label">02 / LINEUP</p><h2>네 팀의 이름. 하나의 라인업.</h2></div><p class="section-note">출연진별 공연 날짜·시간은 추후 공지됩니다.</p></div>
+        <div class="artist-grid">
+          <article class="artist"><h3>MEGADEATH</h3><p>공연 날짜·시간 <span class="unknown">추후 공지</span></p></article>
+          <article class="artist"><h3>GREEN DAY</h3><p>공연 날짜·시간 <span class="unknown">추후 공지</span></p></article>
+          <article class="artist"><h3>SUM41</h3><p>공연 날짜·시간 <span class="unknown">추후 공지</span></p></article>
+          <article class="artist"><h3>잔나비</h3><p>공연 날짜·시간 <span class="unknown">추후 공지</span></p></article>
+        </div>
+        <p class="inline-note">출연진 사정에 따라 프로그램이 변경될 수 있습니다.</p>
+      </div>
+    </section>
+
+    <section id="schedule" class="schedule">
+      <div class="wrap schedule-layout">
+        <div><p class="section-label">03 / SCHEDULE & PROGRAM</p><h2>4일간의 페스티벌</h2><div class="date-block">10.01 — 10.04<span>2026년 · 삼락생태공원</span></div></div>
+        <dl class="facts">
+          <div><dt>일별 시작·종료 시간</dt><dd class="unknown">추후 공지</dd></div>
+          <div><dt>입장 시작 시간</dt><dd class="unknown">추후 공지</dd></div>
+          <div><dt>출연진별 공연 날짜·시간</dt><dd class="unknown">추후 공지</dd></div>
+          <div><dt>공연 순서 및 무대 배정</dt><dd class="unknown">추후 공지</dd></div>
+          <div><dt>무대 구성 및 배치</dt><dd class="unknown">추후 공지</dd></div>
+          <div><dt>세부 프로그램 구성</dt><dd class="unknown">추후 공지</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="tickets">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-label">04 / TICKETS</p><h2>티켓 및 참가 안내</h2></div><p class="section-note">유료 행사 · 티켓 종류별 참가비</p></div>
+        <div class="ticket-grid">
+          <article class="ticket" data-ticket="4"><p class="ticket-label">4 DAY PASS</p><h3>4일권</h3><p class="price">300,000<small>원</small></p></article>
+          <article class="ticket" data-ticket="3"><p class="ticket-label">3 DAY PASS</p><h3>3일권</h3><p class="price">200,000<small>원</small></p></article>
+          <article class="ticket" data-ticket="2"><p class="ticket-label">2 DAY PASS</p><h3>2일권</h3><p class="price">150,000<small>원</small></p></article>
+          <article class="ticket" data-ticket="1"><p class="ticket-label">1 DAY PASS</p><h3>1일권</h3><p class="price">80,000<small>원</small></p></article>
+        </div>
+        <div class="ticket-selector">
+          <div><label for="ticket-choice">티켓 종류 선택</label><select id="ticket-choice" aria-describedby="booking-notice">
+            <option value="">권종을 선택해 주세요</option>
+            <option value="4">4일권 · 300,000원</option>
+            <option value="3">3일권 · 200,000원</option>
+            <option value="2">2일권 · 150,000원</option>
+            <option value="1">1일권 · 80,000원</option>
+          </select></div>
+          <div class="selection-summary"><span>선택한 티켓 및 참가비</span><output id="ticket-summary" for="ticket-choice" aria-live="polite">권종을 선택해 주세요</output></div>
+        </div>
+        <div class="booking" id="booking-notice"><div><strong>예매·신청 방법 및 일정: 추후 공지</strong><p>신청·예매 링크: 추후 공지</p></div><span class="status">예매 링크 · 추후 공지</span></div>
+        <details><summary>티켓 이용 및 관람 조건</summary><dl class="facts">
+          <div><dt>티켓별 이용 조건</dt><dd class="unknown">추후 공지</dd></div>
+          <div><dt>관람 연령 제한</dt><dd class="unknown">추후 공지</dd></div>
+          <div><dt>할인 및 취소·환불 기준</dt><dd class="unknown">추후 공지</dd></div>
+        </dl></details>
+      </div>
+    </section>
+
+    <section id="location" class="location">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-label">05 / GETTING HERE</p><h2>오시는 길</h2></div><p class="section-note">삼락생태공원</p></div>
+        <div class="location-grid">
+          <div class="venue-card"><div><p class="venue-kicker">FESTIVAL VENUE / BUSAN</p><h3>삼락생태공원</h3></div><div class="venue-bottom">상세 주소 및 행사 구역: 추후 공지</div></div>
+          <div class="transport"><h3>대중교통 이용을 권장합니다.</h3><p>주차 공간이 협소하고 행사 당일 혼잡이 예상됩니다. 방문 시 대중교통을 이용해 주세요.</p><dl class="facts">
+            <div><dt>구체적인 대중교통 경로</dt><dd class="unknown">추후 공지</dd></div>
+            <div><dt>주차 운영 정보</dt><dd class="unknown">추후 공지</dd></div>
+            <div><dt>장애인 접근성 안내</dt><dd class="unknown">추후 공지</dd></div>
+          </dl></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="guide" class="guide">
+      <div class="wrap guide-grid">
+        <div><p class="section-label">06 / FESTIVAL GUIDE</p><h2>관람 전 확인하세요.</h2></div>
+        <div><div class="notice"><h3>프로그램 변경 안내</h3><p>출연진 사정에 따라 프로그램이 변경될 수 있습니다.</p></div><details><summary>반입 물품 및 우천 시 운영</summary><dl class="facts"><div><dt>반입 금지 물품</dt><dd class="unknown">추후 공지</dd></div><div><dt>우천 시 운영 기준</dt><dd class="unknown">추후 공지</dd></div></dl></details></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-label">07 / ORGANIZER & CONTACT</p><h2>기관 및 문의 안내</h2></div></div>
+        <div class="contact-grid">
+          <div><h3>주최 및 담당 부서</h3><dl class="facts"><div><dt>관련 기관</dt><dd>부산시</dd></div><div><dt>주최·주관 역할 구분</dt><dd class="unknown">추후 공지</dd></div><div><dt>담당 부서</dt><dd class="unknown">추후 공지</dd></div><div><dt>담당자</dt><dd class="unknown">추후 공지</dd></div></dl></div>
+          <div><h3>신청 링크와 문의처</h3><dl class="facts"><div><dt>신청·예매 링크</dt><dd class="unknown">추후 공지</dd></div><div><dt>공식 문의처</dt><dd class="unknown">추후 공지</dd></div><div><dt>문의 전화번호</dt><dd class="unknown">추후 공지</dd></div><div><dt>문의 이메일</dt><dd class="unknown">추후 공지</dd></div></dl></div>
+        </div>
+        <details class="pending"><summary>추후 공지할 정보</summary><dl class="facts"><div><dt>최종 슬로건 및 홍보 문구</dt><dd class="unknown">추후 공지</dd></div><div><dt>부산광역시 로고 파일 및 사용 기준</dt><dd class="unknown">추후 공지</dd></div><div><dt>포스터 및 출연진 사진·영상 등 추가 홍보 자료</dt><dd class="unknown">추후 공지</dd></div></dl></details>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-inner"><div class="footer-name">2026 부산 락 페스티벌<small>2026.10.01 — 10.04 / 삼락생태공원</small></div><div class="logo-placeholder">부산광역시 로고 · 추후 공지</div><a class="top-link" href="#top">맨 위로 ↑</a></div></footer>
+  <script>
+    const ticketChoice = document.getElementById('ticket-choice');
+    const ticketSummary = document.getElementById('ticket-summary');
+    function updateTicketSelection() {
+      const option = ticketChoice.selectedOptions[0];
+      ticketSummary.value = option.textContent;
+      document.querySelectorAll('[data-ticket]').forEach(card => {
+        card.classList.toggle('is-selected', card.dataset.ticket === ticketChoice.value);
+      });
+    }
+    ticketChoice.addEventListener('change', updateTicketSelection);
+    updateTicketSelection();
+  </script>
+</body>
+</html>

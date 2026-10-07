@@ -1,0 +1,14 @@
+# Keep planning documents and reference materials local.
+/AGENTS.md
+/data/
+/output/
+/.agents/
+/.codex/
+/.aws/
+
+# Local credentials and temporary files.
+.env
+.env.*
+*.log
+Thumbs.db
+Desktop.ini
